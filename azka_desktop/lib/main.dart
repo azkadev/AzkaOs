@@ -76,8 +76,42 @@ class MyApp extends State<App> {
               decoration: BoxDecoration(
                 image: DecorationImage(fit: BoxFit.cover, image: Image.asset("assets/wallpaper/macos.jpeg").image),
               ),
-              child: Stack(
-                children: [Apps()],
+              child: Column(
+                children: [
+                  Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(color: Colors.transparent),
+                    child: Row(
+                      children: [],
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height - 113,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(color: Colors.transparent),
+                    child: LayoutBuilder(
+                      builder: (BuildContext context, BoxConstraints constraints) { 
+                        return MediaQuery(
+                          data: MediaQuery.of(context).copyWith(
+                            size: constraints.biggest
+                          ),
+                          child: Stack(
+                          children: [
+                            Apps(),
+                          ],
+                        ));
+                      },
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 7),
+                    color: Colors.transparent,
+                    child: dock(
+                      status_bar: status_bar,
+                    ),
+                  ),
+                ],
               ),
             );
           },
@@ -85,7 +119,7 @@ class MyApp extends State<App> {
       ),
       floatingActionButtonLocation: floatiActionLocation,
       floatingActionButton: Visibility(
-        visible: isShowFloatingBar,
+        visible: false,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: (chooseData(isMain: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar), main: 50, second: 5) as int).toDouble(),
@@ -362,6 +396,285 @@ class MyApp extends State<App> {
     );
   }
 
+  Widget dock({
+    required String status_bar,
+  }) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: (chooseData(isMain: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar), main: 50, second: 5) as int).toDouble(),
+        vertical: (chooseData(isMain: RegExp(r"^(left|right)$", caseSensitive: false).hasMatch(status_bar), main: 100, second: 0) as int).toDouble(),
+      ),
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          List<Widget> dataAppBar = [
+            ...List.generate(14, (index) {
+              List data = [
+                "files",
+                "adobe",
+                "appsstore",
+                "chrome",
+                "settings",
+                "telegram",
+                "whatsapp",
+                "youtube",
+                "terminal",
+                "vscode",
+                "videos",
+                "audio",
+                "calculator",
+                "ghostbrowser",
+              ];
+              return dataIcon(
+                padding: const EdgeInsets.all(2),
+                onPressed: () async {
+                  Audio player = Audio();
+                  await player.play(AssetSource("sound/block.mp3"));
+                },
+                child: Container(
+                  height: 45,
+                  width: 45,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(0)),
+                    image: DecorationImage(fit: BoxFit.cover, image: Image.asset("assets/icon/${data[index]}.png").image),
+                  ),
+                ),
+              );
+            }).toList()
+          ];
+          List<Widget> dataBar = [
+            Padding(
+              padding: EdgeInsets.only(right: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar) ? 15 : 0, bottom: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar) ? 0 : 15),
+              child: ContainerGlass(
+                child: dataIcon(
+                  padding: const EdgeInsets.all(5),
+                  onPressed: () async {
+                    Audio player = Audio();
+                    await player.play(AssetSource("sound/block.mp3"));
+                  },
+                  child: Icon(
+                    CupertinoIcons.app,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: ContainerGlass(
+                child: changeRowColumn(
+                  isRow: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar),
+                  children: [
+                    dataIcon(
+                      padding: const EdgeInsets.all(5),
+                      onPressed: () async {
+                        Audio player = Audio();
+                        await player.play(AssetSource("sound/block.mp3"));
+                      },
+                      child: Icon(
+                        CupertinoIcons.grid,
+                        color: Colors.white,
+                      ),
+                    ),
+                    dataIcon(
+                      padding: const EdgeInsets.all(5),
+                      onPressed: () async {
+                        Audio player = Audio();
+                        await player.play(AssetSource("sound/block.mp3"));
+                      },
+                      child: Icon(
+                        CupertinoIcons.search,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Spacer(),
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+            //   child: VerticalDivider(
+            //     width: 1,
+            //     color: Colors.white,
+            //   ),
+            // ),
+            Expanded(
+              child: ContainerGlass(
+                child: SingleChildScrollView(
+                  scrollDirection: chooseData(isMain: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar), main: Axis.horizontal, second: Axis.vertical),
+                  physics: const ClampingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  child: chooseWidget(
+                    isMain: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar),
+                    main: Row(
+                      children: dataAppBar,
+                    ),
+                    second: Column(
+                      children: dataAppBar,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Spacer(),
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+            //   child: VerticalDivider(
+            //     width: 1,
+            //     color: Colors.white,
+            //   ),
+            // ),
+            ContainerGlass(
+              child: changeRowColumn(
+                isRow: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar),
+                children: [
+                  dataIcon(
+                    padding: const EdgeInsets.all(5),
+                    onPressed: () async {
+                      Audio player = Audio();
+                      await player.play(AssetSource("sound/block.mp3"));
+                    },
+                    child: Icon(
+                      CupertinoIcons.mic,
+                      color: Colors.white,
+                    ),
+                  ),
+                  dataIcon(
+                    padding: const EdgeInsets.all(5),
+                    onPressed: () async {
+                      Audio player = Audio();
+                      await player.play(AssetSource("sound/block.mp3"));
+                    },
+                    child: Icon(
+                      CupertinoIcons.wifi,
+                      color: Colors.white,
+                    ),
+                  ),
+                  dataIcon(
+                    padding: const EdgeInsets.all(5),
+                    onPressed: () async {
+                      Audio player = Audio();
+                      await player.play(AssetSource("sound/block.mp3"));
+                    },
+                    child: Icon(
+                      CupertinoIcons.bluetooth,
+                      color: Colors.white,
+                    ),
+                  ),
+                  dataIcon(
+                    padding: const EdgeInsets.all(5),
+                    onPressed: () async {
+                      Audio player = Audio();
+                      await player.play(AssetSource("sound/block.mp3"));
+                    },
+                    child: const Icon(
+                      CupertinoIcons.speaker,
+                      color: Colors.white,
+                    ),
+                  ),
+                  dataIcon(
+                    padding: const EdgeInsets.all(5),
+                    onPressed: () async {
+                      Audio player = Audio();
+                      await player.play(AssetSource("sound/block.mp3"));
+                    },
+                    child: Icon(
+                      CupertinoIcons.battery_full,
+                      color: Colors.white,
+                    ),
+                  ),
+                  dataIcon(
+                    padding: const EdgeInsets.all(5),
+                    onPressed: () async {
+                      Audio player = Audio();
+                      await player.play(AssetSource("sound/block.mp3"));
+                    },
+                    child: RotatedBox(
+                      quarterTurns: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar) ? 0 : 1,
+                      child: Icon(
+                        Iconsax.direct_up,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar) ? 15 : 0, top: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar) ? 0 : 15),
+              child: ContainerGlass(
+                child: changeRowColumn(
+                  isRow: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar),
+                  children: [
+                    dataIcon(
+                      padding: const EdgeInsets.all(5),
+                      onPressed: () async {
+                        Audio player = Audio();
+                        await player.play(AssetSource("sound/block.mp3"));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            DateFormat("MMMM").format(DateTime.fromMillisecondsSinceEpoch(timeStamp)).toString(),
+                            textAlign: TextAlign.right,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            DateTime.fromMillisecondsSinceEpoch(timeStamp).day.toString(),
+                            textAlign: TextAlign.right,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                      child: VerticalDivider(
+                        width: 1,
+                        color: Colors.white,
+                      ),
+                    ),
+                    dataIcon(
+                      padding: const EdgeInsets.all(5),
+                      onPressed: () async {
+                        Audio player = Audio();
+                        await player.play(AssetSource("sound/block.mp3"));
+                      },
+                      child: Text(
+                        DateFormat("kk:mm aa").format(DateTime.fromMillisecondsSinceEpoch(timeStamp)).toString(),
+                        textAlign: TextAlign.right,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ];
+          return IntrinsicHeight(
+            child: changeRowColumn(
+              isRow: RegExp(r"^(bottom|top)$", caseSensitive: false).hasMatch(status_bar),
+              children: dataBar,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   Widget ContainerGlass({Widget? child, EdgeInsetsGeometry? padding}) {
     return Container(
       clipBehavior: Clip.antiAlias,
@@ -449,38 +762,32 @@ class _AppState extends State<Apps> {
       statusBarsColors: Colors.blue,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Padding(
-          padding: const EdgeInsets.all(20),
-          child: DeviceFrame(
-            device: Devices.ios.iPhone13ProMax,
-            screen: Scaffold(
-              body: Center(
-                child: PopupMenuButton(
-                  child: Text("Count: $count"),
-                  onSelected: (item) {},
-                  itemBuilder: (BuildContext context) {
-                    List devices = ["asa", "asasa", "saoska", "asa", "saasa", "assa"];
-                    return devices.map((res) {
-                      late String model = "unknown";
-                      late String deviceId = "unknown";
-                      return PopupMenuItem(
-                        child: Text(model),
-                        onTap: () {},
-                      );
-                    }).toList();
-                  },
-                ),
-              ),
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  setState(() {
-                    count++;
-                  });
-                },
-                child: const Icon(
-                  Icons.add,
-                ),
-              ),
+        home: Scaffold(
+          body: Center(
+            child: PopupMenuButton(
+              child: Text("Count: $count"),
+              onSelected: (item) {},
+              itemBuilder: (BuildContext context) {
+                List devices = ["asa", "asasa", "saoska", "asa", "saasa", "assa"];
+                return devices.map((res) {
+                  late String model = "unknown";
+                  late String deviceId = "unknown";
+                  return PopupMenuItem(
+                    child: Text(model),
+                    onTap: () {},
+                  );
+                }).toList();
+              },
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                count++;
+              });
+            },
+            child: const Icon(
+              Icons.add,
             ),
           ),
         ),
