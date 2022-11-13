@@ -86,21 +86,17 @@ class MyApp extends State<App> {
                       children: [],
                     ),
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height - 113,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(color: Colors.transparent),
+                  Expanded(
                     child: LayoutBuilder(
-                      builder: (BuildContext context, BoxConstraints constraints) { 
+                      builder: (BuildContext context, BoxConstraints constraints) {
                         return MediaQuery(
-                          data: MediaQuery.of(context).copyWith(
-                            size: constraints.biggest
-                          ),
+                          data: MediaQuery.of(context).copyWith(size: constraints.biggest),
                           child: Stack(
-                          children: [
-                            Apps(),
-                          ],
-                        ));
+                            children: [
+                              Apps(),
+                            ],
+                          ),
+                        );
                       },
                     ),
                   ),
