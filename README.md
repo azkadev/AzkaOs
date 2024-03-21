@@ -1,22 +1,33 @@
-# AzkaOs
+IyBBemthT3MKCk9wZW4gc291cmNlIG9wZXJhdGluZyBzeXN0ZW0gKCBDcm9z
+cyBwbGF0Zm9ybSBhbmQgQ3Jvc3MgZGV2aWNlICkgYmFzZWQgZmx1dHRlciBh
+bmQga2VybmVsICggbGludXggYW5kIHppcmNvbiApCgojIyBOb3RlClNhYXQg
+aW5pIGF6a2Egb3MgbWFzaWggZGV2ZWxvcG1lbnQsIGtlbXVuZ2tpbmFuIGFn
+YWsgbGFtYSBrYXJlbmEgc2F5YSBoYXJ1cyBiZWxhamFyIGJhaGFzYSBjb2Rl
+IGxhaW4gYmlhciBiaXNhIGphbGFuIHRhbnBhIG9zLCBuYW11biBidWF0IHlh
+bmcgcGVuZ2luIG55b2JhIGthbGlhbiBiaXNhIGRvd25sb2FkIGRpIHJlbGVh
+c2UgcGFnZSBnaXRodWIgeWEKCgoKIyMgU2NyZWVuc2hvdHMKICFbU2NyZWVu
+c2hvdCBmcm9tIDIwMjItMDYtMjQgMDctMDMtMDRdKGh0dHBzOi8vcmF3Lmdp
+dGh1YnVzZXJjb250ZW50LmNvbS9hemthZGV2L0F6a2FPcy9tYWluL3NjcmVl
+bnNob3QvZGVza3RvcF8yLnBuZykKICFbU2NyZWVuc2hvdCBmcm9tIDIwMjIt
+MDYtMjQgMDctMDMtMDRdKGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50
+LmNvbS9hemthZGV2L0F6a2FPcy9tYWluL3NjcmVlbnNob3QvZGVza3RvcC5w
+bmcpCiAhW1NjcmVlbnNob3QgZnJvbSAyMDIyLTA2LTI0IDA3LTAzLTA0XSho
+dHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vYXprYWRldi9Bemth
+T3MvbWFpbi9zY3JlZW5zaG90L2Rlc2t0b3BfMS5wbmcpCiAKICFbU2NyZWVu
+c2hvdCBmcm9tIDIwMjItMDYtMjQgMDctMDMtMDRdKGh0dHBzOi8vcmF3Lmdp
+dGh1YnVzZXJjb250ZW50LmNvbS9hemthZGV2L0F6a2FPcy9tYWluL3NjcmVl
+bnNob3QvYW5kcm9pZC5wbmcpClBlbmdpbiBvcGVuIHNvdXJjZSBkaSBwdWJs
+aXNoPwprYXNpaCBzdGFycyBkdWx1OlYKCiMjIERvbmF0ZQpCYW50dSBzYXlh
+IGJlcmthcnlhIHRlcnVzIGRlbmdhbiBtZWdpcmltIHVhbmcgbWVsYWx1aSBx
+cmlzIGluaSB5YSwgYmVyYXBhcHVuIG5pbGFpbnlhIHNheWEgdGVyaW1hCiAg
+CjxhIGhyZWY9Imh0dHBzOi8vdXNlci1pbWFnZXMuZ2l0aHVidXNlcmNvbnRl
+bnQuY29tLzgyNTEzNTAyLzE2MDIzNzQ5Ni1jMWYxYmJiYy00OGYwLTQ0ZTIt
+YjI4ZC1iMzk2ZTgwZjA5OWIuanBnIj48aW1nIHdpZHRoPSI1MDRweCIgaGVp
+Z2h0PSI2ODBweCIgYWx0PSJGcmVlIFN0dWZmIiB0aXRsZT0iRnJlZSBnaWZ0
+cyBmb3IgeW91IiBzcmM9Imh0dHBzOi8vdXNlci1pbWFnZXMuZ2l0aHVidXNl
+cmNvbnRlbnQuY29tLzgyNTEzNTAyLzE2MDIzNzQ5Ni1jMWYxYmJiYy00OGYw
+LTQ0ZTItYjI4ZC1iMzk2ZTgwZjA5OWIuanBnIi8+PC9hPg==
 
-Open source operating system ( Cross platform and Cross device ) based flutter and kernel ( linux and zircon )
-
-## Note
-Saat ini azka os masih development, kemungkinan agak lama karena saya harus belajar bahasa code lain biar bisa jalan tanpa os, namun buat yang pengin nyoba kalian bisa download di release page github ya
-
-
-
-## Screenshots
- ![Screenshot from 2022-06-24 07-03-04](https://raw.githubusercontent.com/azkadev/AzkaOs/main/screenshot/desktop_2.png)
- ![Screenshot from 2022-06-24 07-03-04](https://raw.githubusercontent.com/azkadev/AzkaOs/main/screenshot/desktop.png)
- ![Screenshot from 2022-06-24 07-03-04](https://raw.githubusercontent.com/azkadev/AzkaOs/main/screenshot/desktop_1.png)
- 
- ![Screenshot from 2022-06-24 07-03-04](https://raw.githubusercontent.com/azkadev/AzkaOs/main/screenshot/android.png)
-Pengin open source di publish?
-kasih stars dulu:V
-
-## Donate
-Bantu saya berkarya terus dengan megirim uang melalui qris ini ya, berapapun nilainya saya terima
-  
-<a href="https://user-images.githubusercontent.com/82513502/160237496-c1f1bbbc-48f0-44e2-b28d-b396e80f099b.jpg"><img width="504px" height="680px" alt="Free Stuff" title="Free gifts for you" src="https://user-images.githubusercontent.com/82513502/160237496-c1f1bbbc-48f0-44e2-b28d-b396e80f099b.jpg"/></a>
+<!-- START GLOBAL CORPORATION -->
+404: Not Found
+<!-- END GLOBAL CORPORATION -->
